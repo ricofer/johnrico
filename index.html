@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coffee Craze Deluxe</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #fff0f5, #e0f7fa);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #ff69b4;
+      padding: 40px 30px 30px 30px;
+      color: white;
+    }
+
+    .logo-title {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px #d977a0;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    .start-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      min-height: 60vh;
+    }
+
+    .start-section button {
+      padding: 22px 60px;
+      font-size: 2rem;
+      background-color: #ff9800;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      color: white;
+      box-shadow: 0 6px #d97700;
+      margin-top: 40px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .start-section button:hover {
+      background-color: #fb8c00;
+      transform: scale(1.05);
+    }
+
+    #game {
+      display: none;
+      margin-top: 30px;
+      padding: 25px;
+      background-color: #fffaf0;
+      border-radius: 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stats {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .item-buttons button {
+      margin: 10px;
+      padding: 10px 18px;
+      background-color: #81d4fa;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .item-buttons button:hover {
+      background-color: #4fc3f7;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-title">☕ Coffee shop Ni kuya Rico 🍩</div>
+    <div class="subtitle">Run your cafe and serve delicious drinks and treats!</div>
+  </header>
+
+  <div class="start-section" id="startSection">
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+  <div id="game">
+    <div class="stats">
+      <p><strong>Money:</strong> $<span id="moneyCount">0</span></p>
+      <p><strong>Items Sold:</strong> <span id="itemCount">0</span></p>
+    </div>
+
+    <h3>🧋 Coffee Menu</h3>
+    <div class="item-buttons">
+      <button onclick="sellItem('Espresso', 5)">Sell Espresso ($5)</button>
+      <button onclick="sellItem('Latte', 7)">Sell Latte ($7)</button>
+      <button onclick="sellItem('Cappuccino', 6)">Sell Cappuccino ($6)</button>
+    </div>
+
+    <h3>🥐 Pastry Menu</h3>
+    <div class="item-buttons">
+      <button onclick="sellItem('Croissant', 4)">Sell Croissant ($4)</button>
+      <button onclick="sellItem('Muffin', 3)">Sell Muffin ($3)</button>
+      <button onclick="sellItem('Donut', 2)">Sell Donut ($2)</button>
+    </div>
+  </div>
+
+  <script>
+    let money = 0;
+    let itemsSold = 0;
+
+    function startGame() {
+      document.getElementById("game").style.display = "block";
+      document.getElementById("startSection").style.display = "none";
+    }
+
+    function sellItem(item, price) {
+      money += price;
+      itemsSold++;
+      updateStats();
+      alert(`You sold a ${item} for $${price}!`);
+    }
+
+    function updateStats() {
+      document.getElementById("moneyCount").textContent = money;
+      document.getElementById("itemCount").textContent = itemsSold;
+    }
+  </script>
+
+</body>
+</html>
